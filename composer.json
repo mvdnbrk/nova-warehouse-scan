@@ -1,0 +1,55 @@
+{
+    "name": "mvdnbrk/nova-warehouse-scan",
+    "description": "Scan tool",
+    "keywords": [
+        "warehouse",
+        "laravel",
+        "nova"
+    ],
+    "homepage": "https://github.com/mvdnbrk/nova-warehouse-scan",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark van den Broek",
+            "email": "mvdnbrk@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "laravel/nova": "*",
+        "mvdnbrk/warehouse-framework": "^0.1.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.8",
+        "phpunit/phpunit": "8.2"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Just\\Warehouse\\Nova\\Scan\\ToolServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Just\\Warehouse\\Nova\\Scan\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Just\\Warehouse\\Nova\\Scan\\Tests\\": "tests"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
