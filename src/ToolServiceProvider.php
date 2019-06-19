@@ -40,7 +40,7 @@ class ToolServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', Authorize::class])
-                ->prefix('nova-vendor/mvdnbrk/nova-warehouse-scan')
+                ->prefix('nova-vendor/mvdnbrk/warehouse-scan')
                 ->group(__DIR__.'/../routes/api.php');
     }
 
