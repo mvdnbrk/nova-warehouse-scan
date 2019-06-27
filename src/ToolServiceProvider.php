@@ -6,6 +6,7 @@ use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Middleware\SubstituteBindings;
 use Just\Warehouse\Nova\Scan\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
@@ -39,9 +40,13 @@ class ToolServiceProvider extends ServiceProvider
             return;
         }
 
-        Route::middleware(['nova', Authorize::class])
-                ->prefix('nova-vendor/mvdnbrk/warehouse-scan')
-                ->group(__DIR__.'/../routes/api.php');
+        Route::middleware([
+                'nova',
+                Authorize::class,
+                SubstituteBindings::class
+            ])
+            ->prefix('nova-vendor/mvdnbrk/warehouse-scan')
+            ->group(__DIR__.'/../routes/api.php');
     }
 
     /**
