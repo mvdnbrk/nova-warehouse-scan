@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Just\Warehouse\Nova\Scan\Http\Controllers\ToolController;
+use Just\Warehouse\Nova\Scan\Http\Controllers\AddInventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,4 @@ use Just\Warehouse\Nova\Scan\Http\Controllers\ToolController;
 */
 
 Route::get('endpoint', [ToolController::class, 'index']);
+Route::post('locations/{location}/add-inventory', [AddInventoryController::class, 'store']);
