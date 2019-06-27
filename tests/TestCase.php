@@ -2,6 +2,7 @@
 
 namespace Just\Warehouse\Nova\Scan\Tests;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Just\Warehouse\Nova\Scan\ToolServiceProvider;
@@ -17,7 +18,34 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
+        $this->withFactories(__DIR__.'/../vendor/mvdnbrk/warehouse-framework/database/factories');
+
+        $this->loadMigrationsFrom(__DIR__.'/../vendor/mvdnbrk/warehouse-framework/database/migrations');
+
+        if (config('database.connections.warehouse.driver') == 'sqlite') {
+            DB::connection('warehouse')->getSchemaBuilder()->enableForeignKeyConstraints();
+        }
+
         Route::middlewareGroup('nova', []);
+    }
+
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        $config = $app->get('config');
+
+        $config->set('database.default', 'warehouse');
+
+        $config->set('database.connections.warehouse', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
     }
 
     /**
