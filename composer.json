@@ -2,9 +2,10 @@
     "name": "mvdnbrk/nova-warehouse-scan",
     "description": "Scan tool",
     "keywords": [
-        "warehouse",
         "laravel",
         "nova"
+        "warehouse",
+        "scan"
     ],
     "homepage": "https://github.com/mvdnbrk/nova-warehouse-scan",
     "license": "MIT",
