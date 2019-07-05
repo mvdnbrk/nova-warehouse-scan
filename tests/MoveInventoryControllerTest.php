@@ -3,7 +3,6 @@
 namespace Just\Warehouse\Nova\Scan\Tests;
 
 use Just\Warehouse\Models\Location;
-use Just\Warehouse\Models\Inventory;
 
 class MoveInventoryControllerTest extends TestCase
 {
@@ -26,7 +25,7 @@ class MoveInventoryControllerTest extends TestCase
 
         $this->postJson('nova-vendor/mvdnbrk/warehouse-scan/locations/'.$location->id.'/move-inventory', [
             'items' => ['1300000000000'],
-            'newLocationId' => 999.
+            'newLocationId' => 999,
         ])->assertNotFound();
 
         $inventory->fresh()->location->is($location);

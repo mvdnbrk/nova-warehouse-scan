@@ -3,7 +3,6 @@
 namespace Just\Warehouse\Nova\Scan\Tests;
 
 use Just\Warehouse\Models\Location;
-use Just\Warehouse\Models\Inventory;
 
 class InventoryControllerTest extends TestCase
 {
