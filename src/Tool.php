@@ -14,7 +14,7 @@ class Tool extends BaseTool
      */
     public function boot()
     {
-        Nova::script('nova-warehouse-scan', __DIR__.'/../dist/js/tool.js');
+        Nova::script('nova-warehouse-scan', __DIR__.'/../dist/js/scan-tool.js');
     }
 
     /**
