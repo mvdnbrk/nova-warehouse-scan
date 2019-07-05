@@ -23,16 +23,13 @@
                         :disabled="processing"
                         @click.prevent="handleClose"
                         class="btn btn-link font-normal text-80 h-9 px-3 mr-3"
-                    >
-                        {{ __('Cancel') }}
-                    </button>
+                    >{{ __('Cancel') }}</button>
 
                     <progress-button
                         type="submit"
                         :disabled="processing"
                         :processing="processing"
-                        >{{ __('Confirm') }}</progress-button
-                    >
+                    >{{ __('Confirm') }}</progress-button>
                 </div>
             </div>
         </form>

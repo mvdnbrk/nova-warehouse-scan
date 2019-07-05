@@ -97,8 +97,7 @@
                     class="ml-3"
                     :disabled="!selectedItems.length"
                     @click.native="openModal"
-                    >{{ __('Choose New Location') }}</progress-button
-                >
+                >{{ __('Choose New Location') }}</progress-button>
             </div>
         </card>
 
@@ -109,7 +108,7 @@
                     @confirm="confirm"
                     @close="closeModal"
                     :processing="processing"
-                />
+                ></confirm-new-location-modal>
             </transition>
         </portal>
     </loading-view>
