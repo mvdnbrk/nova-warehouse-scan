@@ -18,5 +18,27 @@ Nova.booting((Vue, router) => {
     Vue.component('confirm-new-location-modal', ConfirmNewLocationModal);
 
     router.addRoutes([
+        {
+            name: 'locations.add-inventory.index',
+            path: '/scan/add-inventory',
+            component: AddInventoryIndex,
+        },
+        {
+            name: 'locations.add-inventory',
+            path: '/scan/add-inventory/:locationId',
+            component: AddInventory,
+            props: true,
+        },
+        {
+            name: 'locations.move-inventory.index',
+            path: '/scan/move-inventory',
+            component: MoveInventoryIndex,
+        },
+        {
+            name: 'locations.move-inventory',
+            path: '/scan/move-inventory/:locationId',
+            component: MoveInventory,
+            props: true,
+        },
     ]);
 });
