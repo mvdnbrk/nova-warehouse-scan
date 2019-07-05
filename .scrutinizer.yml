@@ -8,7 +8,7 @@ build:
     analysis:
       tests:
         override:
-          - eslint-run
+          - eslint-run ".eslintrc"
           - php-scrutinizer-run
 
 checks:
