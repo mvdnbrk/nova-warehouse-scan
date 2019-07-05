@@ -8,6 +8,12 @@ use Just\Warehouse\Exceptions\InvalidGtinException;
 
 class AddInventoryController extends Controller
 {
+    /**
+     * Store inventory on the given location.
+     *
+     * @param  \Just\Warehouse\Models\Location  $location
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Location $location)
     {
         try {
