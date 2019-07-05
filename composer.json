@@ -3,7 +3,7 @@
     "description": "Scan tool",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
         "warehouse",
         "scan"
     ],
