@@ -32,7 +32,7 @@
                     placeholder="Scan barcode"
                     v-model="gtin"
                     @keydown.enter="selectItem"
-                    :disabled="this.inventoryCoount === 0"
+                    :disabled="this.inventoryCount === 0"
                 />
             </div>
 
