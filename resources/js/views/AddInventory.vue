@@ -44,13 +44,13 @@
                 <thead>
                     <tr>
                         <th class="text-left">GTIN</th>
-                        <th class="text-center"></th>
+                        <th class="text-center w-12"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(item, index) in items" :key="index">
                         <td>{{ item.gtin }}</td>
-                        <td class="text-center">
+                        <td class="text-center flex items-center">
                             <loader v-show="!item.status" class="text-60" width="32" />
                             <span v-if="item.status === 201" class="text-success-dark">
                                 <icon type="checkmark-outline" />
