@@ -3,6 +3,7 @@
 namespace Just\Warehouse\Nova\Scan\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Just\Warehouse\Models\Location;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -28,9 +29,9 @@ class MoveInventoryController extends Controller
                 'message' => $e instanceof ModelNotFoundException
                     ? 'Invalid gtin value: '.collect($e->getIds())->first()
                     : $e->getMessage(),
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        return response([], 202);
+        return response([], Response::HTTP_ACCEPTED);
     }
 }

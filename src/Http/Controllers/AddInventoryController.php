@@ -2,6 +2,7 @@
 
 namespace Just\Warehouse\Nova\Scan\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Just\Warehouse\Models\Location;
 use Just\Warehouse\Exceptions\InvalidGtinException;
@@ -22,12 +23,12 @@ class AddInventoryController extends Controller
             return response([
                 'message' => $e->getMessage(),
                 'gtin' => request('gtin'),
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         return response([
             'gtin' => request('gtin'),
             'location_id' => $location->id,
-        ], 201);
+        ], Response::HTTP_CREATED);
     }
 }
