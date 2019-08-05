@@ -7,7 +7,7 @@ use Just\Warehouse\Models\Location;
 class InventoryControllerTest extends TestCase
 {
     /** @test */
-    public function it_returns_404_response_when_trying_to_get_inventory_on_a_location_that_does_not_exist()
+    public function it_returns_a_404_response_when_trying_to_get_inventory_on_a_location_that_does_not_exist()
     {
         $this->getJson('nova-vendor/mvdnbrk/warehouse-scan/locations/999/inventory')->assertNotFound();
     }

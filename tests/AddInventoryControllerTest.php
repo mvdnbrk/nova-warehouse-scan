@@ -8,7 +8,7 @@ use Just\Warehouse\Models\Inventory;
 class AddInventoryControllerTest extends TestCase
 {
     /** @test */
-    public function it_returns_404_response_when_posting_to_a_location_that_does_not_exist()
+    public function it_returns_a_404_response_when_posting_to_a_location_that_does_not_exist()
     {
         $this->postJson('nova-vendor/mvdnbrk/warehouse-scan/locations/999/add-inventory', [
             'gtin' => '1300000000000',
