@@ -32,6 +32,6 @@ class MoveInventoryController extends Controller
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        return response([], Response::HTTP_ACCEPTED);
+        return response(null, Response::HTTP_ACCEPTED);
     }
 }
