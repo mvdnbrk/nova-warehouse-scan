@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Just\Warehouse\Nova\Scan\Http\Controllers\InventoryController;
 use Just\Warehouse\Nova\Scan\Http\Controllers\AddInventoryController;
 use Just\Warehouse\Nova\Scan\Http\Controllers\MoveInventoryController;
+use Just\Warehouse\Nova\Scan\Http\Controllers\OrderPickListController;
+use Just\Warehouse\Nova\Scan\Http\Controllers\OrderFulfilledController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,6 @@ Route::post('locations/{location}/add-inventory', [AddInventoryController::class
 
 Route::get('locations/{location}/inventory', [InventoryController::class, 'show']);
 Route::post('locations/{location}/move-inventory', [MoveInventoryController::class, 'store']);
+
+Route::get('orders/{order}/picklist', [OrderPickListController::class, 'show']);
+Route::post('orders/{order}/fulfilled', [OrderFulfilledController::class, 'store']);
