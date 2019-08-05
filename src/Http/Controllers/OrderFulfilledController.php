@@ -18,7 +18,7 @@ class OrderFulfilledController extends Controller
     {
         if (! $order->hasPickList()) {
             return response([
-                'message' => 'This order can not be marked as fulfilled.'
+                'message' => 'This order can not be marked as fulfilled.',
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
