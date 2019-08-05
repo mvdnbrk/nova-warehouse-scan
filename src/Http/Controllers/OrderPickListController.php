@@ -18,7 +18,7 @@ class OrderPickListController extends Controller
     {
         if (! $order->hasPickList()) {
             return response([
-                'message' => 'No pick list available.'
+                'message' => 'No pick list available.',
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 

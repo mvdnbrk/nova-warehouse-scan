@@ -39,7 +39,7 @@ class OrderPickListControllerTest extends TestCase
                     'gtin' => '1300000000000',
                     'location' => 'Test Location',
                     'quantity' => 1,
-                ]
+                ],
             ],
             'count' => 1,
         ]);
