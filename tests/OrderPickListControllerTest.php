@@ -8,6 +8,41 @@ use Just\Warehouse\Models\Location;
 class OrderPickListControllerTest extends TestCase
 {
     /** @test */
+    public function it_can_show_a_list_of_open_orders()
+    {
+        $location = factory(Location::class)->create();
+        $location->addInventory('1300000000000');
+        $order = factory(Order::class)->create(['order_number' => '123456']);
+        $order->addLine('1300000000000');
+        $order->process();
+
+        $response = $this->getJson('nova-vendor/mvdnbrk/warehouse-scan/orders/open');
+
+        $response->assertOk();
+        $response->assertJson([
+            'items' => [
+                [
+                    'id' => $order->id,
+                    'order_number' => '123456',
+                ],
+            ],
+            'count' => 1,
+        ]);
+    }
+
+    /** @test */
+    public function it_does_not_show_orders_which_can_not_be_picked()
+    {
+        $response = $this->getJson('nova-vendor/mvdnbrk/warehouse-scan/orders/open');
+
+        $response->assertOk();
+        $response->assertJson([
+            'items' => [],
+            'count' => 0,
+        ]);
+    }
+
+    /** @test */
     public function it_returns_a_404_response_when_trying_to_get_a_picklist_for_an_order_that_does_not_exist()
     {
         $this->getJson('nova-vendor/mvdnbrk/warehouse-scan/orders/999/picklist')->assertNotFound();

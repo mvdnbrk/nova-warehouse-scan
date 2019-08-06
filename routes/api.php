@@ -23,5 +23,6 @@ Route::post('locations/{location}/add-inventory', [AddInventoryController::class
 Route::get('locations/{location}/inventory', [InventoryController::class, 'show']);
 Route::post('locations/{location}/move-inventory', [MoveInventoryController::class, 'store']);
 
+Route::get('orders/open', [OrderPickListController::class, 'index']);
 Route::get('orders/{order}/picklist', [OrderPickListController::class, 'show']);
 Route::post('orders/{order}/fulfilled', [OrderFulfilledController::class, 'store']);
