@@ -10,7 +10,7 @@
 
 ## Installation
 
-You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
+You can install this package into a Laravel app that uses [Nova](https://nova.laravel.com) with composer:
 
 ```bash
 composer require mvdnbrk/nova-warehouse-scan
