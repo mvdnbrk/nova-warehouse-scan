@@ -1,6 +1,6 @@
 {
     "name": "mvdnbrk/nova-warehouse-scan",
-    "description": "Scan tool",
+    "description": "Laravel Nova Warehouse Scan Tool",
     "keywords": [
         "laravel",
         "nova",
