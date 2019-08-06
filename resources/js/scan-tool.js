@@ -10,6 +10,9 @@ import AddInventoryIndex from './views/AddInventoryIndex.vue';
 import MoveInventory from './views/MoveInventory.vue';
 import MoveInventoryIndex from './views/MoveInventoryIndex.vue';
 
+import PickOrderIndex from './views/PickOrderIndex.vue';
+import PickOrder from './views/PickOrder.vue';
+
 Nova.booting((Vue, router) => {
     Vue.component('icon-scan', IconScan);
     Vue.component('icon-close-outline', IconCloseOutline);
@@ -38,6 +41,17 @@ Nova.booting((Vue, router) => {
             name: 'locations.move-inventory',
             path: '/scan/move-inventory/:locationId',
             component: MoveInventory,
+            props: true,
+        },
+        {
+            name: 'orders.pick.index',
+            path: '/scan/pick-order',
+            component: PickOrderIndex,
+        },
+        {
+            name: 'orders.pick',
+            path: '/scan/pick-order/:orderId',
+            component: PickOrder,
             props: true,
         },
     ]);

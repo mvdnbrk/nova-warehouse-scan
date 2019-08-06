@@ -16,4 +16,9 @@
             Move Inventory
         </router-link>
     </li>
+    <li class="leading-tight mb-4 ml-8 text-sm">
+        <router-link :to="{name: 'orders.pick.index'}" class="text-white text-justify no-underline dim">
+            Pick Orders
+        </router-link>
+    </li>
 </ul>
