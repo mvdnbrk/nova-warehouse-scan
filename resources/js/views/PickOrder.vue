@@ -43,12 +43,7 @@
         </div>
 
         <card>
-            <table
-                v-show="list.length"
-                class="table w-full"
-                cellpadding="0"
-                cellspacing="0"
-            >
+            <table v-show="list.length" class="table w-full" cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
                         <th class="text-left">{{ __('Location') }}</th>
@@ -97,12 +92,14 @@ export default {
         initialLoading: true,
         itemCount: 0,
         list: [],
-        'resource': null,
+        resource: null,
     }),
 
     computed: {
         orderNumber() {
-            return this.resource ? _.find(this.resource.fields, ['attribute', 'order_number']).value : '';
+            return this.resource
+                ? _.find(this.resource.fields, ['attribute', 'order_number']).value
+                : '';
         },
     },
 
@@ -133,7 +130,7 @@ export default {
 
                 _.each(items, function(value) {
                     _.set(value, 'count', 0);
-                })
+                });
 
                 return (this.list = items);
             } catch (error) {
@@ -162,7 +159,7 @@ export default {
         },
 
         itemPicked() {
-            let listItem = _.find(this.list, (item) => {
+            let listItem = _.find(this.list, item => {
                 return item.gtin == this.gtin && item.count < item.quantity;
             });
 
@@ -195,6 +192,6 @@ export default {
                 this.$refs.gtin.focus();
             });
         },
-    }
-}
+    },
+};
 </script>

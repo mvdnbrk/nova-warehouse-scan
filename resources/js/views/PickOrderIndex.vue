@@ -13,12 +13,7 @@
         </card>
 
         <card>
-            <table
-                v-show="items.length"
-                class="table w-full"
-                cellpadding="0"
-                cellspacing="0"
-            >
+            <table v-show="items.length" class="table w-full" cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
                         <th class="text-left">ID</th>
@@ -71,14 +66,14 @@ export default {
         async initializeComponent() {
             const {
                 data: { items, count },
-            } = await await Minimum(Nova.request().get(
-                `/nova-vendor/mvdnbrk/warehouse-scan/orders/open`
-            ));
+            } = await await Minimum(
+                Nova.request().get(`/nova-vendor/mvdnbrk/warehouse-scan/orders/open`)
+            );
 
             this.count = count;
             this.items = items;
             this.initialLoading = false;
         },
-    }
-}
+    },
+};
 </script>

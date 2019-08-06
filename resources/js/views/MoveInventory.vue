@@ -89,15 +89,16 @@
             </table>
 
             <div v-show="selectedItems.length" class="bg-30 flex items-center px-8 py-4">
-                <a @click="reset" class="btn btn-link dim cursor-pointer text-80 ml-auto mr-6">{{
-                    __('Reset')
-                }}</a>
-
+                <a @click="reset" class="btn btn-link dim cursor-pointer text-80 ml-auto mr-6">
+                    {{ __('Reset') }}
+                </a>
                 <progress-button
                     class="ml-3"
                     :disabled="!selectedItems.length"
                     @click.native="openModal"
-                >{{ __('Choose New Location') }}</progress-button>
+                >
+                    {{ __('Choose New Location') }}
+                </progress-button>
             </div>
         </card>
 
