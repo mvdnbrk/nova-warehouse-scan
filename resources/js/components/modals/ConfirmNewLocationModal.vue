@@ -26,11 +26,7 @@
                     >
                         {{ __('Cancel') }}
                     </button>
-                    <progress-button
-                        type="submit"
-                        :disabled="processing"
-                        :processing="processing"
-                    >
+                    <progress-button type="submit" :disabled="processing" :processing="processing">
                         {{ __('Confirm') }}
                     </progress-button>
                 </div>

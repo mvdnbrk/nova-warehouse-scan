@@ -114,8 +114,10 @@ export default {
             try {
                 const {
                     data: { items, count, order_number },
-                } = await Nova.request().get(
-                    `/nova-vendor/mvdnbrk/warehouse-scan/orders/${this.orderId}/picklist`
+                } = await Minimum(
+                    Nova.request().get(
+                        `/nova-vendor/mvdnbrk/warehouse-scan/orders/${this.orderId}/picklist`
+                    )
                 );
 
                 this.itemCount = count;
