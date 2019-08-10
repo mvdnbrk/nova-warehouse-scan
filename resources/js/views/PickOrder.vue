@@ -92,22 +92,14 @@ export default {
         initialLoading: true,
         itemCount: 0,
         list: [],
-        resource: null,
+        orderNumber: '',
     }),
-
-    computed: {
-        orderNumber() {
-            return this.resource
-                ? _.find(this.resource.fields, ['attribute', 'order_number']).value
-                : '';
-        },
-    },
 
     methods: {
         async initializeComponent() {
-            await Promise.all([this.getResource(), this.getPickList()]);
+            await this.getPickList();
 
-            if (!this.resource) {
+            if (!this.list.length) {
                 return;
             }
 
@@ -121,12 +113,13 @@ export default {
 
             try {
                 const {
-                    data: { items, count },
+                    data: { items, count, order_number },
                 } = await Nova.request().get(
                     `/nova-vendor/mvdnbrk/warehouse-scan/orders/${this.orderId}/picklist`
                 );
 
                 this.itemCount = count;
+                this.orderNumber = order_number;
 
                 _.each(items, function(value) {
                     _.set(value, 'count', 0);
@@ -134,23 +127,7 @@ export default {
 
                 return (this.list = items);
             } catch (error) {
-                if (error.response.status === 422) {
-                    this.$router.push({ name: '404' });
-
-                    return;
-                }
-            }
-        },
-
-        async getResource() {
-            try {
-                const {
-                    data: { resource },
-                } = await Minimum(Nova.request().get(`/nova-api/orders/${this.orderId}`));
-
-                return (this.resource = resource);
-            } catch (error) {
-                if (error.response.status === 404) {
+                if (error.response.status === 422 || error.response.status === 404) {
                     this.$router.push({ name: '404' });
 
                     return;
