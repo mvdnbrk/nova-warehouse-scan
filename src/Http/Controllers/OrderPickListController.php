@@ -46,6 +46,7 @@ class OrderPickListController extends Controller
         $list = $order->pickList();
 
         return response([
+            'order_number' => $order->order_number,
             'items' => $list->toArray(),
             'count' => $list->pluck('quantity')->sum(),
         ]);
