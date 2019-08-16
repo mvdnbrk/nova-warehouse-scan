@@ -2,6 +2,7 @@
 
 namespace Just\Warehouse\Nova\Scan\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -24,7 +25,7 @@ class MoveInventoryController extends Controller
 
         try {
             $location->moveMany($items, $newLocation);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response([
                 'message' => $e instanceof ModelNotFoundException
                     ? 'Invalid gtin value: '.collect($e->getIds())->first()
