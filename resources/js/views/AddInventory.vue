@@ -50,14 +50,16 @@
                 <tbody>
                     <tr v-for="(item, index) in items" :key="index">
                         <td>{{ item.gtin }}</td>
-                        <td class="text-center flex items-center">
-                            <loader v-show="!item.status" class="text-60" width="32" />
-                            <span v-if="item.status === 201" class="text-success-dark">
-                                <icon type="checkmark-outline" />
-                            </span>
-                            <span v-if="item.status > 201" class="text-danger-dark">
-                                <icon type="close-outline" />
-                            </span>
+                        <td class="text-center">
+                            <div class="flex items-center">
+                                <loader v-show="!item.status" class="text-60" width="32" />
+                                <span v-if="item.status === 201" class="text-success-dark">
+                                    <icon type="checkmark-outline" />
+                                </span>
+                                <span v-if="item.status > 201" class="text-danger-dark">
+                                    <icon type="close-outline" />
+                                </span>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

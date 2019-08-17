@@ -72,17 +72,19 @@
                 <tbody>
                     <tr v-for="(item, index) in selectedItems" :key="index">
                         <td>{{ item.gtin }}</td>
-                        <td class="text-center flex items-center">
-                            <span v-if="item.status === 201" class="text-success-dark">
-                                <icon type="checkmark-outline" />
-                            </span>
-                            <button
-                                class="text-danger-dark"
-                                v-if="item.status > 201"
-                                @click="removeSelectedItemAt(index)"
-                            >
-                                <icon type="close-outline" />
-                            </button>
+                        <td class="text-center">
+                            <div class="flex items-center">
+                                <span v-if="item.status === 201" class="text-success-dark">
+                                    <icon type="checkmark-outline" />
+                                </span>
+                                <button
+                                    class="text-danger-dark"
+                                    v-if="item.status > 201"
+                                    @click="removeSelectedItemAt(index)"
+                                >
+                                    <icon type="close-outline" />
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
