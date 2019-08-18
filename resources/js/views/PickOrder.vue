@@ -42,40 +42,56 @@
             </div>
         </div>
 
-        <card>
-            <table v-show="list.length" class="table w-full" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th class="text-left">{{ __('Location') }}</th>
-                        <th class="text-left">GTIN</th>
-                        <th class="text-center w-12">{{ __('Quantity') }}</th>
-                        <th class="text-center w-12">{{ __('Picked') }}</th>
-                        <th class="text-center w-12"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(item, index) in list" :key="index">
-                        <td>{{ item.location }}</td>
-                        <td>{{ item.gtin }}</td>
-                        <td class="text-center">{{ item.quantity }}</td>
-                        <td class="text-center">{{ item.count }}</td>
-                        <td class="text-center flex items-center">
-                            <span v-if="item.quantity == item.count" class="text-success-dark">
-                                <icon type="checkmark-outline" />
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </card>
+        <fetch-product-fields>
+            <card slot-scope="{ fields, loading: loadingFields }">
+                <table v-show="list.length && !loadingFields" class="table w-full" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-left">GTIN</th>
+                            <th v-for="field in fields" class="text-left">{{ field.name }}</th>
+                            <th class="text-left">{{ __('Location') }}</th>
+                            <th class="text-center w-12">{{ __('Quantity') }}</th>
+                            <th class="text-center w-12">{{ __('Picked') }}</th>
+                            <th class="text-center w-12"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <fetch-product-information v-for="(item, index) in list" :key="`${index}-${item.gtin}`" :fields="fields" :gtin="item.gtin">
+                            <tr slot-scope="{ attributes, loading: loadingInfo }">
+                                <td>{{ item.gtin }}</td>
+                                <td v-for="field in fields">
+                                    <span v-if="! loadingInfo">{{ attributes[field.name] }}</span>
+                                </td>
+                                <td>{{ item.location }}</td>
+                                <td class="text-center">{{ item.quantity }}</td>
+                                <td class="text-center">{{ item.count }}</td>
+                                <td class="text-center">
+                                    <span v-if="item.quantity == item.count" class=" flex items-center text-success-dark">
+                                        <icon type="checkmark-outline" />
+                                    </span>
+                                </td>
+                            </tr>
+                        </fetch-product-information>
+                    </tbody>
+                </table>
+            </card>
+        </fetch-product-fields>
+
     </loading-view>
 </template>
 
 <script>
 import _ from 'lodash';
 import { Minimum } from 'laravel-nova';
+import FetchProductFields from './../components/FetchProductFields.vue';
+import FetchProductInformation from './../components/FetchProductInformation.vue';
 
 export default {
+    components: {
+        FetchProductFields,
+        FetchProductInformation,
+    },
+
     props: {
         orderId: {
             required: true,

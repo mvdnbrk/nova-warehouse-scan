@@ -57,38 +57,48 @@
                     </h3>
                 </div>
             </div>
-            <table
-                v-show="selectedItems.length"
-                class="table w-full"
-                cellpadding="0"
-                cellspacing="0"
-            >
-                <thead>
-                    <tr>
-                        <th class="text-left">GTIN</th>
-                        <th class="text-center w-12"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(item, index) in selectedItems" :key="index">
-                        <td>{{ item.gtin }}</td>
-                        <td class="text-center">
-                            <div class="flex items-center">
-                                <span v-if="item.status === 201" class="text-success-dark">
-                                    <icon type="checkmark-outline" />
-                                </span>
-                                <button
-                                    class="text-danger-dark"
-                                    v-if="item.status > 201"
-                                    @click="removeSelectedItemAt(index)"
-                                >
-                                    <icon type="close-outline" />
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <fetch-product-fields>
+                <table
+                    slot-scope="{ fields }"
+                    v-show="selectedItems.length"
+                    class="table w-full"
+                    cellpadding="0"
+                    cellspacing="0"
+                >
+                    <thead>
+                        <tr>
+                            <th class="text-left">GTIN</th>
+                            <th v-for="field in fields" class="text-left">{{ field.name }}</th>
+                            <th class="text-center w-12"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <fetch-product-information v-for="(item, index) in selectedItems" :key="999 - items.length + index" :fields="fields" :gtin="item.gtin">
+                            <tr slot-scope="{ attributes, loading: loadingInfo }">
+                                <td>{{ item.gtin }}</td>
+                                <td v-for="field in fields">
+                                    <span v-if="! loadingInfo">{{ attributes[field.name] }}</span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="flex items-center">
+                                        <span v-if="item.status === 201" class="text-success-dark">
+                                            <icon type="checkmark-outline" />
+                                        </span>
+                                        <button
+                                            class="text-danger-dark"
+                                            v-if="item.status > 201"
+                                            @click="removeSelectedItemAt(index)"
+                                        >
+                                            <icon type="close-outline" />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </fetch-product-information>
+                    </tbody>
+                </table>
+            </fetch-product-fields>
 
             <div v-show="selectedItems.length" class="bg-30 flex items-center px-8 py-4">
                 <a @click="reset" class="btn btn-link dim cursor-pointer text-80 ml-auto mr-6">
@@ -120,8 +130,15 @@
 <script>
 import _ from 'lodash';
 import { Minimum } from 'laravel-nova';
+import FetchProductFields from './../components/FetchProductFields.vue';
+import FetchProductInformation from './../components/FetchProductInformation.vue';
 
 export default {
+    components: {
+        FetchProductFields,
+        FetchProductInformation,
+    },
+
     props: {
         locationId: {
             required: true,

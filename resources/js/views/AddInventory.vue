@@ -40,30 +40,44 @@
                     </h3>
                 </div>
             </div>
-            <table v-show="items.length" class="table w-full" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th class="text-left">GTIN</th>
-                        <th class="text-center w-12"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(item, index) in items" :key="index">
-                        <td>{{ item.gtin }}</td>
-                        <td class="text-center">
-                            <div class="flex items-center">
-                                <loader v-show="!item.status" class="text-60" width="32" />
-                                <span v-if="item.status === 201" class="text-success-dark">
-                                    <icon type="checkmark-outline" />
-                                </span>
-                                <span v-if="item.status > 201" class="text-danger-dark">
-                                    <icon type="close-outline" />
-                                </span>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <fetch-product-fields>
+                <table
+                    slot-scope="{ fields }"
+                    v-show="items.length"
+                    class="table w-full"
+                    cellpadding="0"
+                    cellspacing="0"
+                >
+                    <thead>
+                        <tr>
+                            <th class="text-left">GTIN</th>
+                            <th v-for="field in fields" class="text-left">{{ field.name }}</th>
+                            <th class="text-center w-12"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <fetch-product-information v-for="(item, index) in items" :key="999 - items.length + index" :fields="fields" :gtin="item.gtin">
+                            <tr slot-scope="{ attributes, loading: loadingInfo }">
+                                <td>{{ item.gtin }}</td>
+                                <td v-for="field in fields">
+                                    <span v-if="! loadingInfo">{{ attributes[field.name] }}</span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="flex items-center">
+                                        <loader v-show="!item.status" class="text-60" width="32" />
+                                        <span v-if="item.status === 201" class="text-success-dark">
+                                            <icon type="checkmark-outline" />
+                                        </span>
+                                        <span v-if="item.status > 201" class="text-danger-dark">
+                                            <icon type="close-outline" />
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </fetch-product-information>
+                    </tbody>
+                </table>
+            </fetch-product-fields>
         </card>
     </loading-view>
 </template>
@@ -71,8 +85,15 @@
 <script>
 import _ from 'lodash';
 import { Minimum } from 'laravel-nova';
+import FetchProductFields from './../components/FetchProductFields.vue';
+import FetchProductInformation from './../components/FetchProductInformation.vue';
 
 export default {
+    components: {
+        FetchProductFields,
+        FetchProductInformation,
+    },
+
     props: {
         locationId: {
             required: true,
