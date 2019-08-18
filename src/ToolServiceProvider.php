@@ -25,9 +25,10 @@ class ToolServiceProvider extends ServiceProvider
         });
 
         Nova::serving(function (ServingNova $event) {
-            Nova::provideToScript([
+            Nova::provideToScript(array_filter([
                 'productInformationEndpoint' => config('warehouse.product.information.endpoint'),
-            ]);
+                'redirectAfterOrderFulfillement' => config('warehouse.redirect.after.fulfillment'),
+            ]));
         });
     }
 

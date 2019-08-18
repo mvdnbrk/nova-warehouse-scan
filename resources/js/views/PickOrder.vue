@@ -180,6 +180,12 @@ export default {
             );
 
             this.$toasted.show(this.__('Order picked successfully!'), { type: 'success' });
+
+            if (Nova.config.redirectAfterOrderFulfillement && this.orderNumber) {
+                setTimeout(() => {
+                    window.location.href = Nova.config.redirectAfterOrderFulfillement + '/' + this.orderNumber;
+                }, 5000);
+            }
         },
 
         setFocus() {
