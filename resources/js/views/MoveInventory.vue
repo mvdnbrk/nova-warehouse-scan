@@ -74,7 +74,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <fetch-product-information v-for="(item, index) in selectedItems" :key="999 - items.length + index" :fields="fields" :gtin="item.gtin">
+                        <fetch-product-information v-for="(item, index) in selectedItems" :key="999 - selectedItems.length + index" :fields="fields" :gtin="item.gtin">
                             <tr slot-scope="{ attributes, loading: loadingInfo }">
                                 <td>{{ item.gtin }}</td>
                                 <td v-for="field in fields">
