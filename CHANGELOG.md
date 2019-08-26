@@ -4,6 +4,8 @@ All notable changes to `nova-warehouse-scan` will be documented in this file
 
 ## [Unreleased]
 
+## [v0.6.1] - 2019-08-26
+
 ## [v0.6.0] - 2019-08-18
 
 ## [v0.5.0] - 2019-08-18
