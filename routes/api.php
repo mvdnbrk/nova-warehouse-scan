@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Just\Warehouse\Nova\Scan\Http\Controllers\LocationController;
 use Just\Warehouse\Nova\Scan\Http\Controllers\InventoryController;
 use Just\Warehouse\Nova\Scan\Http\Controllers\AddInventoryController;
 use Just\Warehouse\Nova\Scan\Http\Controllers\MoveInventoryController;
@@ -17,6 +18,8 @@ use Just\Warehouse\Nova\Scan\Http\Controllers\OrderFulfilledController;
 | by your tool's "Authorize" middleware by default. Now, go build!
 |
 */
+
+Route::get('locations/{location}', [LocationController::class, 'show']);
 
 Route::post('locations/{location}/add-inventory', [AddInventoryController::class, 'store']);
 
