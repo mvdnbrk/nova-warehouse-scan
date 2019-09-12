@@ -161,7 +161,7 @@ export default {
             this.gtin = '';
 
             if (_.isUndefined(listItem)) {
-                this.$toasted.show(this.__('Wrong product scanned!'), { type: 'error' });
+                Nova.error(this.__('Wrong product scanned!');
 
                 return;
             }
@@ -179,7 +179,7 @@ export default {
                 `/nova-vendor/mvdnbrk/warehouse-scan/orders/${this.orderId}/fulfilled`
             );
 
-            this.$toasted.show(this.__('Order picked successfully!'), { type: 'success' });
+            Nova.success(this.__('Order picked successfully!');
 
             if (Nova.config.redirectAfterOrderFulfillement && this.orderNumber) {
                 setTimeout(() => {

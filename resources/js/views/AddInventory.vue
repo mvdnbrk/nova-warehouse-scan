@@ -156,7 +156,7 @@ export default {
             };
 
             if (newItem.gtin.trim() === '') {
-                this.$toasted.show(this.__('Please scan a valid barcode!'), { type: 'error' });
+                Nova.error(this.__('Please scan a valid barcode!');
 
                 return;
             }
