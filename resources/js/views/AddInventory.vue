@@ -156,7 +156,7 @@ export default {
             };
 
             if (newItem.gtin.trim() === '') {
-                Nova.error(this.__('Please scan a valid barcode!');
+                Nova.error(this.__('Please scan a valid barcode!'));
 
                 return;
             }

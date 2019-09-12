@@ -271,9 +271,9 @@ export default {
 
                 await this.reset();
 
-                Nova.success(this.__('Inventory was moved!');
+                Nova.success(this.__('Inventory was moved!'));
             } catch (error) {
-                Nova.error(this.__(error.response.data.message);
+                Nova.error(this.__(error.response.data.message));
 
                 this.processing = false;
             }
