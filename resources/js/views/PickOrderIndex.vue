@@ -66,7 +66,7 @@ export default {
         async initializeComponent() {
             const {
                 data: { items, count },
-            } = await await Minimum(
+            } = await Minimum(
                 Nova.request().get(`/nova-vendor/mvdnbrk/warehouse-scan/orders/open`)
             );
 
