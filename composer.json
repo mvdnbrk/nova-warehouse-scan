@@ -22,8 +22,8 @@
         "mvdnbrk/warehouse-framework": "*"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.8",
-        "phpunit/phpunit": "8.2",
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0",
         "scrutinizer/ocular": "^1.5"
     },
     "config": {
