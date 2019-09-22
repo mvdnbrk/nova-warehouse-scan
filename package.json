@@ -13,11 +13,11 @@
         "lint": "eslint resources/js --fix --ext js,vue"
     },
     "devDependencies": {
-        "cross-env": "^5.2.1",
-        "eslint": "^6.3.0",
+        "cross-env": "^6.0",
+        "eslint": "^6.4",
         "eslint-config-prettier": "^6.3.0",
         "eslint-plugin-vue": "^5.2.3",
-        "laravel-mix": "^4.1.4",
+        "laravel-mix": "^5.0",
         "laravel-nova": "^1.0.9",
         "lodash": "^4.17.15",
         "prettier": "^1.18.2",
