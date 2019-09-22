@@ -160,11 +160,9 @@ export default {
             this.items.unshift(newItem);
 
             try {
-                await Minimum(
-                    Nova.request().post(
-                        `/nova-vendor/mvdnbrk/warehouse-scan/locations/${this.locationId}/add-inventory`,
-                        newItem
-                    )
+                await Nova.request().post(
+                    `/nova-vendor/mvdnbrk/warehouse-scan/locations/${this.locationId}/add-inventory`,
+                    newItem
                 );
 
                 newItem.status = 201;
