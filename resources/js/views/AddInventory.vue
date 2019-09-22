@@ -1,12 +1,27 @@
 <template>
     <loading-view :loading="initialLoading">
         <heading class="mb-3">{{ __('Add Inventory') }}</heading>
-        <card class="flex mb-6 px-6 py-6">
-            <div class="w-1/4">
-                <h4 class="font-normal text-80">{{ __('Location') }}</h4>
+        <card class="mb-6 py-3 px-6">
+            <div class="flex border-b border-40">
+                <div class="w-1/4 py-4">
+                    <h4 class="font-normal text-80">{{ __('Location') }}</h4>
+                </div>
+                <div class="w-3/4 py-4">
+                    <p class="text-90" v-text="locationName"></p>
+                </div>
             </div>
-            <div class="w-3/4">
-                <p class="text-90">{{ locationName }}</p>
+            <div class="flex">
+                <div class="w-1/4 py-4">
+                    <h4 class="font-normal text-80">{{ __('Total Items') }}</h4>
+                </div>
+                <div class="w-3/4 py-4">
+                    <p class="text-90">
+                        {{ itemCount }}
+                        <span v-if="counter">
+                            + {{ counter }} = {{ itemCount + counter }}
+                        </span>
+                    </p>
+                </div>
             </div>
         </card>
 
@@ -114,6 +129,9 @@ export default {
     computed: {
         locationName() {
             return this.location ? this.location.name : '';
+        },
+        itemCount() {
+            return this.location ? this.location.inventory_count : '';
         },
     },
 
