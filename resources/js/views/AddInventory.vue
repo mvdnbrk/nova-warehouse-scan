@@ -121,11 +121,11 @@ export default {
         async initializeComponent() {
             await this.getResource();
 
-            this.initialLoading = false;
-
             if (!this.location) {
                 return;
             }
+
+            this.initialLoading = false;
 
             this.$nextTick(() => {
                 this.$refs.gtin.focus();
@@ -140,8 +140,6 @@ export default {
             } catch (error) {
                 if (error.response.status === 404) {
                     this.$router.push({ name: '404' });
-
-                    return;
                 }
             }
         },
