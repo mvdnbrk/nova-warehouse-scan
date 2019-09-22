@@ -151,7 +151,7 @@ export default {
 
     computed: {
         locationName() {
-            return this.location ? _.find(this.location.fields, ['attribute', 'name']).value : '';
+            return this.location ? this.location.name : '';
         },
     },
 
@@ -211,11 +211,9 @@ export default {
 
         async getResource() {
             try {
-                const {
-                    data: { resource },
-                } = await Minimum(Nova.request().get(`/nova-api/locations/${this.locationId}`));
+                const { data } = await Minimum(Nova.request().get(`/nova-vendor/mvdnbrk/warehouse-scan/locations/${this.locationId}`));
 
-                return (this.location = resource);
+                return (this.location = data);
             } catch (error) {
                 if (error.response.status === 404) {
                     this.$router.push({ name: '404' });
