@@ -174,7 +174,7 @@ export default {
             }
         },
 
-        orderPicked() {
+        async orderPicked() {
             try {
                 await Nova.request().post(
                     `/nova-vendor/mvdnbrk/warehouse-scan/orders/${this.orderId}/fulfilled`
