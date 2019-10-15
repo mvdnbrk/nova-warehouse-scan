@@ -4,8 +4,8 @@ namespace Just\Warehouse\Nova\Scan\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Just\Warehouse\Models\Location;
 use Just\Warehouse\Exceptions\InvalidGtinException;
+use Just\Warehouse\Models\Location;
 
 class AddInventoryController extends Controller
 {

@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Just\Warehouse\Nova\Scan\Http\Controllers\LocationController;
-use Just\Warehouse\Nova\Scan\Http\Controllers\InventoryController;
 use Just\Warehouse\Nova\Scan\Http\Controllers\AddInventoryController;
+use Just\Warehouse\Nova\Scan\Http\Controllers\InventoryController;
+use Just\Warehouse\Nova\Scan\Http\Controllers\LocationController;
 use Just\Warehouse\Nova\Scan\Http\Controllers\MoveInventoryController;
-use Just\Warehouse\Nova\Scan\Http\Controllers\OrderPickListController;
 use Just\Warehouse\Nova\Scan\Http\Controllers\OrderFulfilledController;
+use Just\Warehouse\Nova\Scan\Http\Controllers\OrderPickListController;
 
 /*
 |--------------------------------------------------------------------------

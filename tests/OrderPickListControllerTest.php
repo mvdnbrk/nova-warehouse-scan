@@ -2,8 +2,8 @@
 
 namespace Just\Warehouse\Nova\Scan\Tests;
 
-use Just\Warehouse\Models\Order;
 use Just\Warehouse\Models\Location;
+use Just\Warehouse\Models\Order;
 
 class OrderPickListControllerTest extends TestCase
 {

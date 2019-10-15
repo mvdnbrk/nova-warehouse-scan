@@ -3,8 +3,8 @@
 namespace Just\Warehouse\Nova\Scan\Http\Controllers;
 
 use Illuminate\Http\Response;
-use Just\Warehouse\Models\Order;
 use Illuminate\Routing\Controller;
+use Just\Warehouse\Models\Order;
 
 class OrderPickListController extends Controller
 {
