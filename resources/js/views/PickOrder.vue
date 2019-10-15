@@ -175,16 +175,20 @@ export default {
         },
 
         orderPicked() {
-            Nova.request().post(
-                `/nova-vendor/mvdnbrk/warehouse-scan/orders/${this.orderId}/fulfilled`
-            );
+            try {
+                await Nova.request().post(
+                    `/nova-vendor/mvdnbrk/warehouse-scan/orders/${this.orderId}/fulfilled`
+                );
 
-            Nova.success(this.__('Order picked successfully!'));
+                Nova.success(this.__('Order picked successfully!'));
 
-            if (Nova.config.redirectAfterOrderFulfillement && this.orderNumber) {
-                setTimeout(() => {
-                    window.location.href = Nova.config.redirectAfterOrderFulfillement + '/' + this.orderNumber;
-                }, 5000);
+                if (Nova.config.redirectAfterOrderFulfillement && this.orderNumber) {
+                    setTimeout(() => {
+                        window.location.href = Nova.config.redirectAfterOrderFulfillement + '/' + this.orderNumber;
+                    }, 5000);
+                }
+            } catch (error) {
+                Nova.error(this.__(error.response.data.message));
             }
         },
 
