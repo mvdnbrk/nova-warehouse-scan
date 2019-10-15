@@ -3,11 +3,11 @@
 namespace Just\Warehouse\Nova\Scan\Http\Controllers;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Just\Warehouse\Models\Location;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MoveInventoryController extends Controller
 {

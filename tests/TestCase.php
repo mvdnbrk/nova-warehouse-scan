@@ -4,9 +4,9 @@ namespace Just\Warehouse\Nova\Scan\Tests;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Just\Warehouse\Nova\Scan\ToolServiceProvider;
 use Just\Warehouse\WarehouseServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Just\Warehouse\Nova\Scan\ToolServiceProvider;
 
 abstract class TestCase extends Orchestra
 {

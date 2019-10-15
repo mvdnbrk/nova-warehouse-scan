@@ -2,8 +2,8 @@
 
 namespace Just\Warehouse\Nova\Scan\Tests;
 
-use Just\Warehouse\Models\Location;
 use Just\Warehouse\Models\Inventory;
+use Just\Warehouse\Models\Location;
 
 class AddInventoryControllerTest extends TestCase
 {
