@@ -4,7 +4,9 @@
         <card class="mb-6 py-3 px-6">
             <div class="flex border-b border-40">
                 <div class="w-1/4 py-4">
-                    <h4 class="font-normal text-80">{{ __('Order Number') }}</h4>
+                    <h4 class="font-normal text-80">
+                        {{ __('Order Number') }}
+                    </h4>
                 </div>
                 <div class="w-3/4 py-4">
                     <p class="text-90" v-text="orderNumber"></p>
@@ -22,7 +24,10 @@
 
         <div class="flex h-9 mb-6 items-center">
             <div class="relative flex-no-shrink">
-                <icon type="scan" class="absolute search-icon-center ml-3 text-70" />
+                <icon
+                    type="scan"
+                    class="absolute search-icon-center ml-3 text-70"
+                />
 
                 <input
                     class="appearance-none form-control form-input w-search pl-search"
@@ -44,29 +49,53 @@
 
         <fetch-product-fields>
             <card slot-scope="{ fields, loading: loadingFields }">
-                <table v-show="list.length && !loadingFields" class="table w-full" cellpadding="0" cellspacing="0">
+                <table
+                    v-show="list.length && !loadingFields"
+                    class="table w-full"
+                    cellpadding="0"
+                    cellspacing="0"
+                >
                     <thead>
                         <tr>
                             <th class="text-left">GTIN</th>
-                            <th v-for="field in fields" class="text-left">{{ field.name }}</th>
+                            <th v-for="field in fields" class="text-left">
+                                {{ field.name }}
+                            </th>
                             <th class="text-left">{{ __('Location') }}</th>
-                            <th class="text-center w-12">{{ __('Quantity') }}</th>
+                            <th class="text-center w-12">
+                                {{ __('Quantity') }}
+                            </th>
                             <th class="text-center w-12">{{ __('Picked') }}</th>
                             <th class="text-center w-12"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <fetch-product-information v-for="(item, index) in list" :key="`${index}-${item.gtin}`" :fields="fields" :gtin="item.gtin">
-                            <tr slot-scope="{ attributes, loading: loadingInfo }">
+                        <fetch-product-information
+                            v-for="(item, index) in list"
+                            :key="`${index}-${item.gtin}`"
+                            :fields="fields"
+                            :gtin="item.gtin"
+                        >
+                            <tr
+                                slot-scope="{
+                                    attributes,
+                                    loading: loadingInfo,
+                                }"
+                            >
                                 <td>{{ item.gtin }}</td>
                                 <td v-for="field in fields">
-                                    <span v-if="! loadingInfo">{{ attributes[field.name] }}</span>
+                                    <span v-if="!loadingInfo">{{
+                                        attributes[field.name]
+                                    }}</span>
                                 </td>
                                 <td>{{ item.location }}</td>
                                 <td class="text-center">{{ item.quantity }}</td>
                                 <td class="text-center">{{ item.count }}</td>
                                 <td class="text-center">
-                                    <span v-if="item.quantity == item.count" class=" flex items-center text-success-dark">
+                                    <span
+                                        v-if="item.quantity == item.count"
+                                        class=" flex items-center text-success-dark"
+                                    >
                                         <icon type="checkmark-outline" />
                                     </span>
                                 </td>
@@ -76,7 +105,6 @@
                 </table>
             </card>
         </fetch-product-fields>
-
     </loading-view>
 </template>
 
@@ -145,7 +173,10 @@ export default {
 
                 return (this.list = items);
             } catch (error) {
-                if (error.response.status === 422 || error.response.status === 404) {
+                if (
+                    error.response.status === 422 ||
+                    error.response.status === 404
+                ) {
                     this.$router.push({ name: '404' });
 
                     return;
@@ -182,9 +213,15 @@ export default {
 
                 Nova.success(this.__('Order picked successfully!'));
 
-                if (Nova.config.redirectAfterOrderFulfillement && this.orderNumber) {
+                if (
+                    Nova.config.redirectAfterOrderFulfillement &&
+                    this.orderNumber
+                ) {
                     setTimeout(() => {
-                        window.location.href = Nova.config.redirectAfterOrderFulfillement + '/' + this.orderNumber;
+                        window.location.href =
+                            Nova.config.redirectAfterOrderFulfillement +
+                            '/' +
+                            this.orderNumber;
                     }, 5000);
                 }
             } catch (error) {

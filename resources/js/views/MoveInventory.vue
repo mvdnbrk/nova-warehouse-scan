@@ -22,7 +22,10 @@
 
         <div class="flex h-9 mb-6 items-center">
             <div class="relative flex-no-shrink">
-                <icon type="scan" class="absolute search-icon-center ml-3 text-70" />
+                <icon
+                    type="scan"
+                    class="absolute search-icon-center ml-3 text-70"
+                />
 
                 <input
                     class="appearance-none form-control form-input w-search pl-search"
@@ -49,11 +52,23 @@
             >
                 <div class="text-center">
                     <icon type="scan" width="50" height="50" class="mb-3" />
-                    <h3 class="text-base font-normal text-80" v-if="this.inventory.length">
-                        {{ __('Scan the items you wish to move to another location.') }}
+                    <h3
+                        class="text-base font-normal text-80"
+                        v-if="this.inventory.length"
+                    >
+                        {{
+                            __(
+                                'Scan the items you wish to move to another location.'
+                            )
+                        }}
                     </h3>
-                    <h3 class="text-base font-normal text-80" v-if="!this.inventory.length">
-                        {{ __('There are no inventory items at this location.') }}
+                    <h3
+                        class="text-base font-normal text-80"
+                        v-if="!this.inventory.length"
+                    >
+                        {{
+                            __('There are no inventory items at this location.')
+                        }}
                     </h3>
                 </div>
             </div>
@@ -69,20 +84,37 @@
                     <thead>
                         <tr>
                             <th class="text-left">GTIN</th>
-                            <th v-for="field in fields" class="text-left">{{ field.name }}</th>
+                            <th v-for="field in fields" class="text-left">
+                                {{ field.name }}
+                            </th>
                             <th class="text-center w-12"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <fetch-product-information v-for="(item, index) in selectedItems" :key="999 - selectedItems.length + index" :fields="fields" :gtin="item.gtin">
-                            <tr slot-scope="{ attributes, loading: loadingInfo }">
+                        <fetch-product-information
+                            v-for="(item, index) in selectedItems"
+                            :key="999 - selectedItems.length + index"
+                            :fields="fields"
+                            :gtin="item.gtin"
+                        >
+                            <tr
+                                slot-scope="{
+                                    attributes,
+                                    loading: loadingInfo,
+                                }"
+                            >
                                 <td>{{ item.gtin }}</td>
                                 <td v-for="field in fields">
-                                    <span v-if="! loadingInfo">{{ attributes[field.name] }}</span>
+                                    <span v-if="!loadingInfo">{{
+                                        attributes[field.name]
+                                    }}</span>
                                 </td>
                                 <td class="text-center">
                                     <div class="flex items-center">
-                                        <span v-if="item.status === 201" class="text-success-dark">
+                                        <span
+                                            v-if="item.status === 201"
+                                            class="text-success-dark"
+                                        >
                                             <icon type="checkmark-outline" />
                                         </span>
                                         <button
@@ -100,8 +132,14 @@
                 </table>
             </fetch-product-fields>
 
-            <div v-show="selectedItems.length" class="bg-30 flex items-center px-8 py-4">
-                <a @click="reset" class="btn btn-link dim cursor-pointer text-80 ml-auto mr-6">
+            <div
+                v-show="selectedItems.length"
+                class="bg-30 flex items-center px-8 py-4"
+            >
+                <a
+                    @click="reset"
+                    class="btn btn-link dim cursor-pointer text-80 ml-auto mr-6"
+                >
                     {{ __('Reset') }}
                 </a>
                 <progress-button
@@ -211,7 +249,11 @@ export default {
 
         async getResource() {
             try {
-                const { data } = await Minimum(Nova.request().get(`/nova-vendor/mvdnbrk/warehouse-scan/locations/${this.locationId}`));
+                const { data } = await Minimum(
+                    Nova.request().get(
+                        `/nova-vendor/mvdnbrk/warehouse-scan/locations/${this.locationId}`
+                    )
+                );
 
                 return (this.location = data);
             } catch (error) {

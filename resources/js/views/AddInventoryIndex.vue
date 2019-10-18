@@ -19,7 +19,10 @@ export default {
 
     methods: {
         selected(e) {
-            this.$router.push({ name: 'locations.add-inventory', params: { locationId: e } });
+            this.$router.push({
+                name: 'locations.add-inventory',
+                params: { locationId: e },
+            });
         },
     },
 };

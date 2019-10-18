@@ -1,9 +1,14 @@
 <template>
     <form @submit.prevent="next" autocomplete="off">
-        <form-belongs-to-field resource-name="inventories" :field="field"></form-belongs-to-field>
+        <form-belongs-to-field
+            resource-name="inventories"
+            :field="field"
+        ></form-belongs-to-field>
 
         <div class="bg-30 flex items-center px-8 py-4">
-            <progress-button class="ml-auto" type="submit">{{ __('Next') }}</progress-button>
+            <progress-button class="ml-auto" type="submit">{{
+                __('Next')
+            }}</progress-button>
         </div>
     </form>
 </template>
