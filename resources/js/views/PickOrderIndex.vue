@@ -26,7 +26,9 @@
                     <tr v-for="(item, index) in items" :key="index">
                         <td>{{ item.id }}</td>
                         <td>{{ item.order_number }}</td>
-                        <td>{{ item.created_at }}</td>
+                        <td>
+                            <index-date-time :field="{ 'value': item.created_at, textAlign: 'left' }" />
+                        </td>
                         <td class="td-fit text-right pr-6">
                             <router-link
                                 class="cursor-pointer text-70 hover:text-primary mr-3"
