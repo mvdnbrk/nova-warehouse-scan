@@ -13,7 +13,12 @@
         </card>
 
         <card>
-            <table v-show="items.length" class="table w-full" cellpadding="0" cellspacing="0">
+            <table
+                v-show="items.length"
+                class="table w-full"
+                cellpadding="0"
+                cellspacing="0"
+            >
                 <thead>
                     <tr>
                         <th class="text-left">ID</th>
@@ -27,7 +32,12 @@
                         <td>{{ item.id }}</td>
                         <td>{{ item.order_number }}</td>
                         <td>
-                            <index-date-time :field="{ 'value': item.created_at, textAlign: 'left' }" />
+                            <index-date-time
+                                :field="{
+                                    value: item.created_at,
+                                    textAlign: 'left',
+                                }"
+                            />
                         </td>
                         <td class="td-fit text-right pr-6">
                             <router-link
@@ -40,7 +50,12 @@
                                 }"
                                 :title="__('View')"
                             >
-                                <icon type="view" width="22" height="18" view-box="0 0 22 16" />
+                                <icon
+                                    type="view"
+                                    width="22"
+                                    height="18"
+                                    view-box="0 0 22 16"
+                                />
                             </router-link>
                         </td>
                     </tr>
@@ -69,7 +84,9 @@ export default {
             const {
                 data: { items, count },
             } = await Minimum(
-                Nova.request().get(`/nova-vendor/mvdnbrk/warehouse-scan/orders/open`)
+                Nova.request().get(
+                    `/nova-vendor/mvdnbrk/warehouse-scan/orders/open`
+                )
             );
 
             this.count = count;

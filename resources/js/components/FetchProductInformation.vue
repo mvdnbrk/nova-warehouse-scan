@@ -6,13 +6,13 @@ export default {
         },
         gtin: {
             default: '',
-        }
+        },
     },
 
     data: () => ({
-        'attributes': {},
-        'endpoint': Nova.config.productInformationEndpoint,
-        'loading': true,
+        attributes: {},
+        endpoint: Nova.config.productInformationEndpoint,
+        loading: true,
     }),
 
     mounted() {
@@ -27,7 +27,7 @@ export default {
         },
 
         async getAttributes() {
-            if (! this.endpoint || ! this.gtin) {
+            if (!this.endpoint || !this.gtin) {
                 return;
             }
 
@@ -49,8 +49,7 @@ export default {
         return this.$scopedSlots.default({
             attributes: this.attributes,
             loading: this.loading,
-        })
+        });
     },
-
-}
+};
 </script>

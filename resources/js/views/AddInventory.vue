@@ -27,7 +27,10 @@
 
         <div class="flex h-9 mb-6 items-center">
             <div class="relative flex-no-shrink">
-                <icon type="scan" class="absolute search-icon-center ml-3 text-70" />
+                <icon
+                    type="scan"
+                    class="absolute search-icon-center ml-3 text-70"
+                />
 
                 <input
                     class="appearance-none form-control form-input w-search pl-search"
@@ -47,11 +50,15 @@
         </div>
 
         <card>
-            <div v-show="!items.length" class="flex justify-center items-center text-50 px-6 py-8">
+            <div
+                v-show="!items.length"
+                class="flex justify-center items-center text-50 px-6 py-8"
+            >
                 <div class="text-center">
                     <icon type="scan" width="50" height="50" class="mb-3" />
                     <h3 class="text-base font-normal text-80">
-                        Scan the items you wish to add to location {{ locationName }}.
+                        Scan the items you wish to add to location
+                        {{ locationName }}.
                     </h3>
                 </div>
             </div>
@@ -66,24 +73,48 @@
                     <thead>
                         <tr>
                             <th class="text-left">GTIN</th>
-                            <th v-for="field in fields" class="text-left">{{ field.name }}</th>
+                            <th v-for="field in fields" class="text-left">
+                                {{ field.name }}
+                            </th>
                             <th class="text-center w-12"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <fetch-product-information v-for="(item, index) in items" :key="999 - items.length + index" :fields="fields" :gtin="item.gtin">
-                            <tr slot-scope="{ attributes, loading: loadingInfo }">
+                        <fetch-product-information
+                            v-for="(item, index) in items"
+                            :key="999 - items.length + index"
+                            :fields="fields"
+                            :gtin="item.gtin"
+                        >
+                            <tr
+                                slot-scope="{
+                                    attributes,
+                                    loading: loadingInfo,
+                                }"
+                            >
                                 <td>{{ item.gtin }}</td>
                                 <td v-for="field in fields">
-                                    <span v-if="! loadingInfo">{{ attributes[field.name] }}</span>
+                                    <span v-if="!loadingInfo">{{
+                                        attributes[field.name]
+                                    }}</span>
                                 </td>
                                 <td class="text-center">
                                     <div class="flex items-center">
-                                        <loader v-show="!item.status" class="text-60" width="32" />
-                                        <span v-if="item.status === 201" class="text-success-dark">
+                                        <loader
+                                            v-show="!item.status"
+                                            class="text-60"
+                                            width="32"
+                                        />
+                                        <span
+                                            v-if="item.status === 201"
+                                            class="text-success-dark"
+                                        >
                                             <icon type="checkmark-outline" />
                                         </span>
-                                        <span v-if="item.status > 201" class="text-danger-dark">
+                                        <span
+                                            v-if="item.status > 201"
+                                            class="text-danger-dark"
+                                        >
                                             <icon type="close-outline" />
                                         </span>
                                     </div>
@@ -152,7 +183,11 @@ export default {
 
         async getResource() {
             try {
-                const { data } = await Minimum(Nova.request().get(`/nova-vendor/mvdnbrk/warehouse-scan/locations/${this.locationId}`));
+                const { data } = await Minimum(
+                    Nova.request().get(
+                        `/nova-vendor/mvdnbrk/warehouse-scan/locations/${this.locationId}`
+                    )
+                );
 
                 return (this.location = data);
             } catch (error) {

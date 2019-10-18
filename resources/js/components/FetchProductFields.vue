@@ -1,10 +1,9 @@
 <script>
 export default {
-
     data: () => ({
-        'fields': [],
-        'loading': true,
-        'endpoint': Nova.config.productInformationEndpoint,
+        fields: [],
+        loading: true,
+        endpoint: Nova.config.productInformationEndpoint,
     }),
 
     created() {
@@ -39,8 +38,7 @@ export default {
         return this.$scopedSlots.default({
             fields: this.fields,
             loading: this.loading,
-        })
+        });
     },
-
-}
+};
 </script>
