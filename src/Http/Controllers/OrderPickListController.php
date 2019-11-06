@@ -5,6 +5,7 @@ namespace Just\Warehouse\Nova\Scan\Http\Controllers;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Just\Warehouse\Models\Order;
+use Just\Warehouse\Models\States\Order\Open;
 
 class OrderPickListController extends Controller
 {
@@ -15,13 +16,14 @@ class OrderPickListController extends Controller
      */
     public function index()
     {
-        $orders = Order::open()->orderBy('created_at')->get()->makeHidden([
-            'meta',
-            'status',
-            'updated_at',
-            'deleted_at',
-            'fulfilled_at',
-        ]);
+        $orders = Order::whereState('status', Open::class)
+            ->orderBy('created_at')->get()->makeHidden([
+                'meta',
+                'status',
+                'updated_at',
+                'deleted_at',
+                'fulfilled_at',
+            ]);
 
         return response([
             'items' => $orders->toArray(),
