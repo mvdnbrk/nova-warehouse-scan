@@ -2,8 +2,10 @@
 
 namespace Just\Warehouse\Nova\Scan\Tests;
 
+use Facades\OrderFactory;
 use Just\Warehouse\Models\Location;
 use Just\Warehouse\Models\Order;
+use Just\Warehouse\Models\States\Order\Hold;
 
 class OrderPickListControllerTest extends TestCase
 {
@@ -51,9 +53,48 @@ class OrderPickListControllerTest extends TestCase
     /** @test */
     public function it_returns_a_422_response_when_trying_to_get_a_picklist_for_an_order_while_its_not_available()
     {
-        $order = factory(Order::class)->create();
+        $order = factory(Order::class)->create(['order_number' => '123456']);
 
-        $this->getJson('nova-vendor/mvdnbrk/warehouse-scan/orders/'.$order->id.'/picklist')->assertStatus(422);
+        $response = $this->getJson('nova-vendor/mvdnbrk/warehouse-scan/orders/'.$order->id.'/picklist');
+
+        $response->assertStatus(422);
+        $response->assertJson([
+            'order_number' => '123456',
+            'message' => 'This order can not be picked.',
+            'status' => 'created',
+        ]);
+    }
+
+    /** @test */
+    public function it_returns_a_422_response_when_trying_to_get_a_picklist_for_an_order_which_is_on_hold()
+    {
+        $order = factory(Order::class)->create(['order_number' => '123456']);
+        $order->update(['status' => 'hold']);
+
+        $response = $this->getJson('nova-vendor/mvdnbrk/warehouse-scan/orders/'.$order->id.'/picklist');
+
+        $response->assertStatus(422);
+        $response->assertJson([
+            'order_number' => '123456',
+            'message' => 'This order can not be picked.',
+            'status' => 'on hold',
+        ]);
+    }
+
+    /** @test */
+    public function it_returns_a_422_response_when_trying_to_get_a_picklist_for_an_order_which_is_in_backorder()
+    {
+        $order = factory(Order::class)->create(['order_number' => '123456']);
+        $order->update(['status' => 'backorder']);
+
+        $response = $this->getJson('nova-vendor/mvdnbrk/warehouse-scan/orders/'.$order->id.'/picklist');
+
+        $response->assertStatus(422);
+        $response->assertJson([
+            'order_number' => '123456',
+            'message' => 'This order can not be picked.',
+            'status' => 'in backorder',
+        ]);
     }
 
     /** @test */
@@ -61,7 +102,7 @@ class OrderPickListControllerTest extends TestCase
     {
         $location = factory(Location::class)->create(['name' => 'Test Location']);
         $location->addInventory('1300000000000');
-        $order = factory(Order::class)->create();
+        $order = factory(Order::class)->create(['order_number' => '123456']);
         $order->addLine('1300000000000');
         $order->process();
 
@@ -69,6 +110,7 @@ class OrderPickListControllerTest extends TestCase
 
         $response->assertOk();
         $response->assertJson([
+            'order_number' => '123456',
             'items' => [
                 [
                     'gtin' => '1300000000000',
@@ -77,6 +119,7 @@ class OrderPickListControllerTest extends TestCase
                 ],
             ],
             'count' => 1,
+            'status' => 'open',
         ]);
     }
 }

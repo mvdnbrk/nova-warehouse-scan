@@ -41,7 +41,9 @@ class OrderPickListController extends Controller
     {
         if (! $order->hasPickList()) {
             return response([
-                'message' => 'No pick list available.',
+                'order_number' => $order->order_number,
+                'message' => 'This order can not be picked.',
+                'status' => $order->status->label(),
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
@@ -51,6 +53,7 @@ class OrderPickListController extends Controller
             'order_number' => $order->order_number,
             'items' => $list->toArray(),
             'count' => $list->pluck('quantity')->sum(),
+            'status' => $order->status->label(),
         ]);
     }
 }
