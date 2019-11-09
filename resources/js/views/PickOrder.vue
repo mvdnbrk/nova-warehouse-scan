@@ -2,10 +2,7 @@
     <loading-view :loading="initialLoading">
         <heading class="mb-3">{{ __('Pick Order') }}</heading>
         <card class="mb-6 py-3 px-6">
-            <div
-                class="flex"
-                :class="!hasError && 'border-b border-40'"
-            >
+            <div class="flex" :class="!hasError && 'border-b border-40'">
                 <div class="w-1/4 py-4">
                     <h4 class="font-normal text-80">
                         {{ __('Order Number') }}
@@ -26,22 +23,25 @@
         </card>
 
         <card v-if="hasError">
-            <div
-                class="flex justify-center items-center text-50 px-6 py-8"
-            >
+            <div class="flex justify-center items-center text-50 px-6 py-8">
                 <div class="text-center">
-                    <icon type="exclamation-outline" width="50" height="50" class="mb-3" />
-                    <h3
-                        class="text-base font-normal text-80 mb-2"
-                    >
+                    <icon
+                        type="exclamation-outline"
+                        width="50"
+                        height="50"
+                        class="mb-3"
+                    />
+                    <h3 class="text-base font-normal text-80 mb-2">
                         {{ __(this.errorMessage) }}
                     </h3>
-                    <p class="text-base font-normal text-70">{{ __('Order status: ') }} {{ __(this.status) }}</p>
+                    <p class="text-base font-normal text-70">
+                        {{ __('Order status: ') }} {{ __(this.status) }}
+                    </p>
                 </div>
             </div>
         </card>
 
-        <div class="flex h-9 mb-6 items-center" v-if="! hasError">
+        <div class="flex h-9 mb-6 items-center" v-if="!hasError">
             <div class="relative flex-no-shrink">
                 <icon
                     type="scan"
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <fetch-product-fields v-if="! hasError">
+        <fetch-product-fields v-if="!hasError">
             <card slot-scope="{ fields, loading: loadingFields }">
                 <table
                     v-show="list.length && !loadingFields"
