@@ -2,7 +2,10 @@
     <loading-view :loading="initialLoading">
         <heading class="mb-3">{{ __('Pick Order') }}</heading>
         <card class="mb-6 py-3 px-6">
-            <div class="flex border-b border-40">
+            <div
+                class="flex"
+                :class="!hasError && 'border-b border-40'"
+            >
                 <div class="w-1/4 py-4">
                     <h4 class="font-normal text-80">
                         {{ __('Order Number') }}
@@ -12,7 +15,7 @@
                     <p class="text-90" v-text="orderNumber"></p>
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex" v-if="!hasError">
                 <div class="w-1/4 py-4">
                     <h4 class="font-normal text-80">{{ __('Total Items') }}</h4>
                 </div>
@@ -22,7 +25,23 @@
             </div>
         </card>
 
-        <div class="flex h-9 mb-6 items-center">
+        <card v-if="hasError">
+            <div
+                class="flex justify-center items-center text-50 px-6 py-8"
+            >
+                <div class="text-center">
+                    <icon type="exclamation-outline" width="50" height="50" class="mb-3" />
+                    <h3
+                        class="text-base font-normal text-80 mb-2"
+                    >
+                        {{ __(this.errorMessage) }}
+                    </h3>
+                    <p class="text-base font-normal text-70">{{ __('Order status: ') }} {{ __(this.status) }}</p>
+                </div>
+            </div>
+        </card>
+
+        <div class="flex h-9 mb-6 items-center" v-if="! hasError">
             <div class="relative flex-no-shrink">
                 <icon
                     type="scan"
@@ -47,7 +66,7 @@
             </div>
         </div>
 
-        <fetch-product-fields>
+        <fetch-product-fields v-if="! hasError">
             <card slot-scope="{ fields, loading: loadingFields }">
                 <table
                     v-show="list.length && !loadingFields"
@@ -137,17 +156,20 @@ export default {
         itemCount: 0,
         list: [],
         orderNumber: '',
+        status: '',
+        errorMessage: '',
+        hasError: false,
     }),
 
     methods: {
         async initializeComponent() {
             await this.getPickList();
 
+            this.initialLoading = false;
+
             if (!this.list.length) {
                 return;
             }
-
-            this.initialLoading = false;
 
             this.setFocus();
         },
@@ -157,7 +179,7 @@ export default {
 
             try {
                 const {
-                    data: { items, count, order_number },
+                    data: { items, count, order_number, status },
                 } = await Minimum(
                     Nova.request().get(
                         `/nova-vendor/mvdnbrk/warehouse-scan/orders/${this.orderId}/picklist`
@@ -166,6 +188,7 @@ export default {
 
                 this.itemCount = count;
                 this.orderNumber = order_number;
+                this.status = status;
 
                 _.each(items, function(value) {
                     _.set(value, 'count', 0);
@@ -173,13 +196,17 @@ export default {
 
                 return (this.list = items);
             } catch (error) {
-                if (
-                    error.response.status === 422 ||
-                    error.response.status === 404
-                ) {
+                if (error.response.status === 404) {
                     this.$router.push({ name: '404' });
 
                     return;
+                }
+
+                if (error.response.status === 422) {
+                    this.orderNumber = error.response.data.order_number;
+                    this.errorMessage = error.response.data.message;
+                    this.status = error.response.data.status;
+                    this.hasError = true;
                 }
             }
         },
