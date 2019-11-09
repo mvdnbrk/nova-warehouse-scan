@@ -1,6 +1,7 @@
 import IconScan from './components/icons/Scan.vue';
 import IconCloseOutline from './components/icons/CloseOutline.vue';
 import IconCheckmarkOutline from './components/icons/CheckmarkOutline.vue';
+import IconExclamationOutline from './components/icons/ExclamationOutline.vue';
 
 import ChooseLocation from './components/ChooseLocation.vue';
 import ConfirmNewLocationModal from './components/modals/ConfirmNewLocationModal.vue';
