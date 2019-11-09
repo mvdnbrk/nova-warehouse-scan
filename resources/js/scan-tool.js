@@ -18,6 +18,7 @@ Nova.booting((Vue, router) => {
     Vue.component('icon-scan', IconScan);
     Vue.component('icon-close-outline', IconCloseOutline);
     Vue.component('icon-checkmark-outline', IconCheckmarkOutline);
+    Vue.component('icon-exclamation-outline', IconExclamationOutline);
     Vue.component('choose-location', ChooseLocation);
     Vue.component('confirm-new-location-modal', ConfirmNewLocationModal);
 
