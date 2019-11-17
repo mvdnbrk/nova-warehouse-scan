@@ -33,6 +33,16 @@ class ToolServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
      * Register the tool's routes.
      *
      * @return void
@@ -50,15 +60,5 @@ class ToolServiceProvider extends ServiceProvider
             ])
             ->prefix('nova-vendor/mvdnbrk/warehouse-scan')
             ->group(__DIR__.'/../routes/api.php');
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }
