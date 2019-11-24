@@ -35,7 +35,7 @@
                         {{ __(this.errorMessage) }}
                     </h3>
                     <p class="text-base font-normal text-70">
-                        {{ __('Order status: ') }} {{ __(this.status) }}
+                        {{ __('Order status') }}: {{ __(this.status) }}
                     </p>
                 </div>
             </div>
