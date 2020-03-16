@@ -13,7 +13,7 @@
         "lint": "eslint resources/js --fix --ext js,vue"
     },
     "devDependencies": {
-        "cross-env": "^6.0",
+        "cross-env": "^7.0",
         "eslint": "^6.6.0",
         "eslint-config-prettier": "^6.5.0",
         "eslint-plugin-vue": "^6.0.0",
