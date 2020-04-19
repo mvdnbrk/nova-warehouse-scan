@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Just\Warehouse\Nova\Scan\ToolServiceProvider;
 use Just\Warehouse\WarehouseServiceProvider;
 use Mvdnbrk\EloquentExpirable\ExpirableServiceProvider;
+use Mvdnbrk\Gtin\GtinServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -59,8 +60,9 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            ToolServiceProvider::class,
             ExpirableServiceProvider::class,
+            GtinServiceProvider::class,
+            ToolServiceProvider::class,
             WarehouseServiceProvider::class,
         ];
     }
