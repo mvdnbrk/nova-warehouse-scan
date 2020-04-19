@@ -113,7 +113,7 @@
                                 <td class="text-center">
                                     <span
                                         v-if="item.quantity == item.count"
-                                        class=" flex items-center text-success-dark"
+                                        class="flex items-center text-success-dark"
                                     >
                                         <icon type="checkmark-outline" />
                                     </span>
@@ -190,7 +190,7 @@ export default {
                 this.orderNumber = order_number;
                 this.status = status;
 
-                _.each(items, function(value) {
+                _.each(items, function (value) {
                     _.set(value, 'count', 0);
                 });
 
