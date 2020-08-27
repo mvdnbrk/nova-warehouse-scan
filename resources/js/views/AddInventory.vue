@@ -40,6 +40,9 @@
                     placeholder="Scan barcode"
                     v-model="gtin"
                     @keydown.enter="addItem"
+                    @keydown.up.prevent
+                    @keydown.down.prevent
+                    @wheel.prevent
                 />
             </div>
 

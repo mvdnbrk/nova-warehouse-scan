@@ -56,6 +56,9 @@
                     placeholder="Scan barcode"
                     v-model="gtin"
                     @keydown.enter="itemPicked"
+                    @keydown.up.prevent
+                    @keydown.down.prevent
+                    @wheel.prevent
                     :disabled="this.counter == this.itemCount"
                 />
             </div>
