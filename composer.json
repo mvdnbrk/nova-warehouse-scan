@@ -19,7 +19,7 @@
     "require": {
         "php": "^7.4",
         "laravel/nova": "^3.0",
-        "mvdnbrk/warehouse-framework": "^0.14"
+        "mvdnbrk/warehouse-framework": "^0.15"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0",
