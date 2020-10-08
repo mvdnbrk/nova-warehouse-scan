@@ -4,6 +4,8 @@ All notable changes to `nova-warehouse-scan` will be documented in this file
 
 ## [Unreleased]
 
+## [v0.10.5] - 2020-10-08
+
 ## [v0.10.4] - 2020-09-01
 
 ## [v0.10.3] - 2020-08-27
@@ -48,7 +50,8 @@ All notable changes to `nova-warehouse-scan` will be documented in this file
 
 ## v0.1.0 - 2019-07-05
 
-[Unreleased]: https://github.com/mvdnbrk/nova-warehouse-scan/compare/v0.10.4...HEAD
+[Unreleased]: https://github.com/mvdnbrk/nova-warehouse-scan/compare/v0.10.5...HEAD
+[v0.10.5]: https://github.com/mvdnbrk/nova-warehouse-scan/compare/v0.10.4...v0.10.5
 [v0.10.4]: https://github.com/mvdnbrk/nova-warehouse-scan/compare/v0.10.3...v0.10.4
 [v0.10.3]: https://github.com/mvdnbrk/nova-warehouse-scan/compare/v0.10.2...v0.10.3
 [v0.10.2]: https://github.com/mvdnbrk/nova-warehouse-scan/compare/v0.10.1...v0.10.2
