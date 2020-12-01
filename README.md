@@ -62,7 +62,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/mvdnbrk/nova-warehouse-scan.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-style-ci]: https://styleci.io/repos/192776616/shield?branch=master
+[ico-style-ci]: https://styleci.io/repos/192776616/shield?branch=main
 [ico-downloads]: https://img.shields.io/packagist/dt/mvdnbrk/nova-warehouse-scan.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/mvdnbrk/nova-warehouse-scan
