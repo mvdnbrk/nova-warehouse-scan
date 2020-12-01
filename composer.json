@@ -19,6 +19,7 @@
     "require": {
         "php": "^7.4",
         "laravel/nova": "^3.0",
+        "nesbot/carbon": "^2.31",
         "mvdnbrk/warehouse-framework": "^0.16"
     },
     "require-dev": {
