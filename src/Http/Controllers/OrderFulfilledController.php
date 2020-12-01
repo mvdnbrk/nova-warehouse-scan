@@ -11,12 +11,13 @@ class OrderFulfilledController extends Controller
     /**
      * Mark the given order as fulfilled.
      *
-     * @param  \Just\Warehouse\Models\Order  $order
+     * @param \Just\Warehouse\Models\Order $order
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Order $order)
     {
-        if (! $order->hasPickList()) {
+        if (!$order->hasPickList()) {
             return response([
                 'message' => 'This order can not be marked as fulfilled.',
             ], Response::HTTP_UNPROCESSABLE_ENTITY);

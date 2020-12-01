@@ -22,7 +22,7 @@ class OrderPickListControllerTest extends TestCase
         $response->assertJson([
             'items' => [
                 [
-                    'id' => $order->id,
+                    'id'           => $order->id,
                     'order_number' => '123456',
                 ],
             ],
@@ -58,8 +58,8 @@ class OrderPickListControllerTest extends TestCase
         $response->assertStatus(422);
         $response->assertJson([
             'order_number' => '123456',
-            'message' => 'This order can not be picked.',
-            'status' => 'created',
+            'message'      => 'This order can not be picked.',
+            'status'       => 'created',
         ]);
     }
 
@@ -74,8 +74,8 @@ class OrderPickListControllerTest extends TestCase
         $response->assertStatus(422);
         $response->assertJson([
             'order_number' => '123456',
-            'message' => 'This order can not be picked.',
-            'status' => 'on hold',
+            'message'      => 'This order can not be picked.',
+            'status'       => 'on hold',
         ]);
     }
 
@@ -90,8 +90,8 @@ class OrderPickListControllerTest extends TestCase
         $response->assertStatus(422);
         $response->assertJson([
             'order_number' => '123456',
-            'message' => 'This order can not be picked.',
-            'status' => 'in backorder',
+            'message'      => 'This order can not be picked.',
+            'status'       => 'in backorder',
         ]);
     }
 
@@ -109,14 +109,14 @@ class OrderPickListControllerTest extends TestCase
         $response->assertOk();
         $response->assertJson([
             'order_number' => '123456',
-            'items' => [
+            'items'        => [
                 [
-                    'gtin' => '1300000000000',
+                    'gtin'     => '1300000000000',
                     'location' => 'Test Location',
                     'quantity' => 1,
                 ],
             ],
-            'count' => 1,
+            'count'  => 1,
             'status' => 'open',
         ]);
     }

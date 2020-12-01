@@ -18,7 +18,7 @@ class LocationControllerTest extends TestCase
 
         $response->assertOk();
         $response->assertJson([
-            'name' => 'test-123',
+            'name'            => 'test-123',
             'inventory_count' => 1,
         ]);
     }

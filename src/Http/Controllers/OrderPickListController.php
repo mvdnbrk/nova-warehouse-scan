@@ -34,16 +34,17 @@ class OrderPickListController extends Controller
     /**
      * Show the pick list for a given order.
      *
-     * @param  \Just\Warehouse\Models\Order  $order
+     * @param \Just\Warehouse\Models\Order $order
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(Order $order)
     {
-        if (! $order->hasPickList()) {
+        if (!$order->hasPickList()) {
             return response([
                 'order_number' => $order->order_number,
-                'message' => 'This order can not be picked.',
-                'status' => $order->status->label(),
+                'message'      => 'This order can not be picked.',
+                'status'       => $order->status->label(),
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
@@ -51,9 +52,9 @@ class OrderPickListController extends Controller
 
         return response([
             'order_number' => $order->order_number,
-            'items' => $list->toArray(),
-            'count' => $list->pluck('quantity')->sum(),
-            'status' => $order->status->label(),
+            'items'        => $list->toArray(),
+            'count'        => $list->pluck('quantity')->sum(),
+            'status'       => $order->status->label(),
         ]);
     }
 }

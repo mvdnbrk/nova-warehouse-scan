@@ -28,7 +28,7 @@ class AddInventoryControllerTest extends TestCase
 
         $response->assertStatus(201);
         $response->assertJson([
-            'gtin' => '1300000000000',
+            'gtin'        => '1300000000000',
             'location_id' => $location->id,
         ]);
         $this->assertCount(1, $location->inventory);

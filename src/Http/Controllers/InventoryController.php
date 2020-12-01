@@ -10,7 +10,8 @@ class InventoryController extends Controller
     /**
      * Show the inventory on a given location.
      *
-     * @param  \Just\Warehouse\Models\Location  $location
+     * @param \Just\Warehouse\Models\Location $location
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(Location $location)

@@ -12,7 +12,8 @@ class AddInventoryController extends Controller
     /**
      * Store inventory on the given location.
      *
-     * @param  \Just\Warehouse\Models\Location  $location
+     * @param \Just\Warehouse\Models\Location $location
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Location $location)
@@ -22,12 +23,12 @@ class AddInventoryController extends Controller
         } catch (InvalidGtinException $e) {
             return response([
                 'message' => $e->getMessage(),
-                'gtin' => request('gtin'),
+                'gtin'    => request('gtin'),
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         return response([
-            'gtin' => request('gtin'),
+            'gtin'        => request('gtin'),
             'location_id' => $location->id,
         ], Response::HTTP_CREATED);
     }

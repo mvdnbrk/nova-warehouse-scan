@@ -14,7 +14,8 @@ class MoveInventoryController extends Controller
     /**
      * Move inventory to another location.
      *
-     * @param  \Just\Warehouse\Models\Location  $location
+     * @param \Just\Warehouse\Models\Location $location
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request, Location $location)

@@ -12,7 +12,7 @@ class MoveInventoryControllerTest extends TestCase
         $newLocation = factory(Location::class)->create();
 
         $this->postJson('nova-vendor/mvdnbrk/warehouse-scan/locations/999/move-inventory', [
-            'items' => ['1300000000000'],
+            'items'         => ['1300000000000'],
             'newLocationId' => $newLocation->id,
         ])->assertNotFound();
     }
@@ -24,7 +24,7 @@ class MoveInventoryControllerTest extends TestCase
         $inventory = $location->addInventory('1300000000000');
 
         $this->postJson('nova-vendor/mvdnbrk/warehouse-scan/locations/'.$location->id.'/move-inventory', [
-            'items' => ['1300000000000'],
+            'items'         => ['1300000000000'],
             'newLocationId' => 999,
         ])->assertNotFound();
 
