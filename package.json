@@ -14,13 +14,13 @@
     },
     "devDependencies": {
         "cross-env": "^7.0",
-        "eslint": "^7.10.0",
-        "eslint-config-prettier": "^6.12.0",
-        "eslint-plugin-vue": "^7.0.1",
-        "laravel-mix": "^5.0.6",
-        "laravel-nova": "^1.6.0",
+        "eslint": "^7.14.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-plugin-vue": "^7.1.0",
+        "laravel-mix": "^5.0.9",
+        "laravel-nova": "^1.7.0",
         "lodash": "^4.17.20",
-        "prettier": "^2.1.2",
+        "prettier": "^2.2.1",
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.12"
     }

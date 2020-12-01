@@ -19,11 +19,11 @@
     "require": {
         "php": "^7.4",
         "laravel/nova": "^3.0",
-        "mvdnbrk/warehouse-framework": "^0.15"
+        "mvdnbrk/warehouse-framework": "^0.16"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.0",
-        "phpunit/phpunit": "^9.1"
+        "orchestra/testbench": "^5.10",
+        "phpunit/phpunit": "^9.4"
     },
     "config": {
         "sort-packages": true
