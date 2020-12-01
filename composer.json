@@ -22,7 +22,8 @@
         "mvdnbrk/warehouse-framework": "^0.16"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.10",
+        "laravel/legacy-factories": "^1.1",
+        "orchestra/testbench": "^5.10 || ^6.5",
         "phpunit/phpunit": "^9.4"
     },
     "config": {

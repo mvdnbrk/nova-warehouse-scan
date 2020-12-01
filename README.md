@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![StyleCI][ico-style-ci]][link-style-ci]
+[![Tests][ico-tests]][link-tests]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 ## Installation
@@ -62,11 +62,11 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/mvdnbrk/nova-warehouse-scan.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-style-ci]: https://styleci.io/repos/192776616/shield?branch=main
 [ico-downloads]: https://img.shields.io/packagist/dt/mvdnbrk/nova-warehouse-scan.svg?style=flat-square
+[ico-tests]: https://github.com/mvdnbrk/nova-warehouse-scan/workflows/tests/badge.svg?branch=main
 
 [link-packagist]: https://packagist.org/packages/mvdnbrk/nova-warehouse-scan
-[link-style-ci]: https://styleci.io/repos/192776616
 [link-downloads]: https://packagist.org/packages/mvdnbrk/nova-warehouse-scan
+[link-tests]: https://github.com/mvdnbrk/nova-warehouse-scan/actions?query=workflow%3Atests
 [link-author]: https://github.com/mvdnbrk
 [link-contributors]: ../../contributors
