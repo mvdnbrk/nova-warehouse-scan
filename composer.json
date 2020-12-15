@@ -23,7 +23,7 @@
     },
     "require-dev": {
         "laravel/legacy-factories": "^1.1",
-        "orchestra/testbench": "^5.10 || ^6.5",
+        "orchestra/testbench": "^6.5",
         "phpunit/phpunit": "^9.4"
     },
     "config": {
