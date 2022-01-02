@@ -17,8 +17,8 @@
         }
     ],
     "require": {
-        "php": "^7.4",
-        "laravel/nova": "^3.0",
+        "php": "^7.4|^8.0",,
+        "laravel/nova": "^3",
         "mvdnbrk/warehouse-framework": "^0.16"
     },
     "require-dev": {
